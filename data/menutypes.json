@@ -1,0 +1,42 @@
+[
+    {
+        "id": 0,
+        "name": "Sandwich",
+        "visible": true
+    },
+    {
+        "id": 1,
+        "name": "Dinner",
+        "visible": true
+    },
+    {
+        "id": 2,
+        "name": "Side",
+        "visible": true
+    },
+    {
+        "id": 3,
+        "name": "Dessert",
+        "visible": true
+    },
+    {
+        "id": 4,
+        "name": "Drinks",
+        "visible": false
+    },
+    {
+        "id": 5,
+        "name": "Fountain Drinks",
+        "visible": true
+    },
+    {
+        "id": 6,
+        "name": "Snacks",
+        "visible": true
+    },
+    {
+        "id": 7,
+        "name": "Condiments",
+        "visible": false
+    }
+]
