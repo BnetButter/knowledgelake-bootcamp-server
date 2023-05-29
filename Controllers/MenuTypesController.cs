@@ -9,20 +9,20 @@ namespace MenuAPI.Controllers;
 public class MenuTypesController: ControllerBase
 {
     private readonly ILogger<MenuTypesController> _logger;
-    public JsonFileFoodTypeService jsonFileFoodTypeService { get; }
+    public PsqlFoodTypeService FoodTypeService { get; }
     
     public MenuTypesController(
         ILogger<MenuTypesController> logger,
-        JsonFileFoodTypeService typeService
+        PsqlFoodTypeService typeService
         )   
     {
         _logger = logger;
-        jsonFileFoodTypeService = typeService;
+        FoodTypeService = typeService;
     }
 
     [HttpGet(Name="GetMenuTypes")]
     public IEnumerable<FoodType> Get()
     {
-        return jsonFileFoodTypeService.GetFoodTypes();
+        return FoodTypeService.GetFoodTypes();
     }
 }

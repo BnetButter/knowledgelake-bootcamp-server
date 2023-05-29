@@ -3,37 +3,33 @@ using MenuAPI.Models;
 
 namespace MenuAPI.Services;
 
-public class PsqlFoodItemService 
+public class PsqlFoodTypeService 
 {
 
     NpgsqlConnection conn { get; }
 
-    public PsqlFoodItemService()
+    public PsqlFoodTypeService()
     {
         string connectionString = "Host=localhost;Username=postgres;Password=password;Database=root_db;";
         conn = new NpgsqlConnection(connectionString);
         conn.Open();
     }
 
-    public IEnumerable<FoodItem> GetFoodItems()
+    public IEnumerable<FoodType> GetFoodTypes()
     {
-        var sql = "SELECT * FROM public.\"nc_hzs9___FoodItem\" ORDER BY id ASC";
+        var sql = "SELECT * FROM public.\"nc_hzs9___ItemType\" ORDER BY id ASC";
         var cmd = new NpgsqlCommand(sql, conn);
-        List<FoodItem> items = new List<FoodItem>();
+        List<FoodType> items = new List<FoodType>();
 
         using (var rdr = cmd.ExecuteReader())
         {
             var index = 0;
             while (rdr.Read())
             {
-                items.Add(new FoodItem {
+                items.Add(new FoodType {
                     Id = index,
                     Name = (string) rdr["name"],
-                    Price = Convert.ToInt32((Int64) rdr["price"]),
-                    Type_id = Convert.ToInt32((Int64) rdr["type_id"]),
-                    Options = rdr["options"] != System.DBNull.Value ? 
-                        ((string) rdr["options"]).Split(",").Select(int.Parse).ToArray() :
-                        new int[0],
+                    visible = Convert.ToBoolean(rdr["visible"]),
                 });
                 index += 1;
             }
