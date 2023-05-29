@@ -19,17 +19,12 @@ public class PsqlFoodItemService
 
     public IEnumerable<FoodItem> GetFoodItems()
     {
-        
         var sql = "SELECT * FROM public.\"nc_hzs9___FoodItem\" ORDER BY id ASC";
-
         var cmd = new NpgsqlCommand(sql, conn);
-
-
         List<FoodItem> items = new List<FoodItem>();
 
         using (var rdr = cmd.ExecuteReader())
         {
-    
             var index = 0;
             while (rdr.Read())
             {
@@ -46,6 +41,5 @@ public class PsqlFoodItemService
             }
         }
         return items;
-
     }
 }
