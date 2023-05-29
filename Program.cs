@@ -10,6 +10,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<JsonFileFoodItemService>();
 builder.Services.AddTransient<JsonFileFoodTypeService>();
+builder.Services.AddTransient<PsqlFoodItemService>();
+
 
 var app = builder.Build();
 
