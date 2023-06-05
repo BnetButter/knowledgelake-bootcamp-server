@@ -9,7 +9,7 @@ namespace MenuAPI.Controllers;
 public class MenuItemsController: ControllerBase
 {
     private readonly ILogger<MenuItemsController> _logger;
-    public PsqlFoodItemService FoodItemService { get; }
+    public PsqlFoodItemService FoodItemService { get; }  // Change to an interface
     
     public MenuItemsController(
         ILogger<MenuItemsController> logger,
