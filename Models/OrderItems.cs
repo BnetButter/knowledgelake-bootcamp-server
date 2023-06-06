@@ -2,10 +2,12 @@ using System.Text.Json.Serialization;
 using System.Text.Json;
 
 namespace OrdersAPI.Models;
+
+
 public class OrderItem
 {
     [JsonPropertyName("orderId")]
-    public int OrderId { get; set; }
+    public string OrderId { get; set; }
 
     [JsonPropertyName("itemId")]
     public int ItemId { get; set; }
@@ -14,7 +16,7 @@ public class OrderItem
     public int[] Options { get; set; }
 
     [JsonPropertyName("status")]
-    public bool Status { get; set; }
+    public string Status { get; set; }
     
     public override string ToString()
     {

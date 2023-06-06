@@ -1,5 +1,7 @@
 using MenuAPI.Services;
 using MenuAPI.Interface;
+using OrdersAPI.Services;
+using OrdersAPI.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +25,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IFoodItemService, PsqlFoodItemService>();
 builder.Services.AddScoped<IFoodTypeService, PsqlFoodTypeService>();
-
+builder.Services.AddScoped<IOrderItemService, PsqlOrderItemService>();
 var app = builder.Build();
 app.UseCors(MyAllowSpecificOrigins);
 

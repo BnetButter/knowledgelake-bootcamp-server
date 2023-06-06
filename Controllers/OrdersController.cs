@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrdersAPI.Models;
 using OrdersAPI.Services;
+using OrdersAPI.Interface;
 namespace OrdersAPI.Controllers;
 
 
@@ -10,20 +11,20 @@ public class OrdersController : ControllerBase
 {
     private readonly ILogger<OrdersController> _logger;
     
-    public PsqlOrderItemService Service;
+    public IOrderItemService Service;
 
     public OrdersController(
         ILogger<OrdersController> logger,
-        PsqlOrderItemService service
+        IOrderItemService service
         )
     {
         Service = service;
     }
 
     [HttpGet(Name = "GetOrderItem")]
-    public IEnumerable<OrderItem> Get(int orderId, bool completed)
+    public IEnumerable<OrderItem> Get()
     {
-        return Service.GetOrderItems(orderId);
+        return Service.GetPendingOrderItems();
     }
 
     [HttpPost]
@@ -39,5 +40,4 @@ public class OrdersController : ControllerBase
         // If the Text property of the received model is valid, return a success response.
         return Ok($"Received model with text");
     }
-
 }
