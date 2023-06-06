@@ -9,6 +9,7 @@ using System.Linq;
 
 using MenuAPI.Services;
 using MenuAPI.Models;
+using MenuAPI.Interface;
 namespace OrdersAPI.Controllers;
 
 [ApiController]
@@ -17,10 +18,10 @@ public class SalesController : ControllerBase
 {
     private readonly ILogger<SalesController> _logger;
     
-    public PsqlFoodItemService FoodItemService;
+    public IFoodItemService FoodItemService;
     public SalesController(
         ILogger<SalesController> logger,
-        PsqlFoodItemService foodItemService
+        IFoodItemService foodItemService
         )
     {
         _logger = logger;
@@ -69,7 +70,7 @@ public class SalesController : ControllerBase
         foreach (var item in FoodItemService.GetFoodItems()) {
             menu_reference.Add(item);
         }
-        
+
         // Create Line Item based on sale items
         var LineItems = new List<SessionLineItemOptions>();
         for (int i = 0; i < items.Length; i++)
