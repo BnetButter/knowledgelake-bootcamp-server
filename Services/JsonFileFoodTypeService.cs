@@ -1,8 +1,9 @@
 using System.Text.Json;
 using MenuAPI.Models;
+using MenuAPI.Interface;
 namespace MenuAPI.Services;
 
-public class JsonFileFoodTypeService
+public class JsonFileFoodTypeService: IFoodTypeService
 {
     public IWebHostEnvironment WebHostEnvironment { get; }
 

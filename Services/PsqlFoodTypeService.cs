@@ -1,9 +1,10 @@
 using Npgsql;
 using MenuAPI.Models;
+using MenuAPI.Interface;
 
 namespace MenuAPI.Services;
 
-public class PsqlFoodTypeService 
+public class PsqlFoodTypeService: IFoodTypeService
 {
     NpgsqlConnection conn { get; }
 

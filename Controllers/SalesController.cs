@@ -4,6 +4,8 @@ using OrdersAPI.Services;
 using System;
 using Stripe;
 using Stripe.Checkout;
+using System.Linq;
+
 
 using MenuAPI.Services;
 using MenuAPI.Models;
@@ -62,8 +64,12 @@ public class SalesController : ControllerBase
     public IActionResult PostSale([FromBody] SaleItem[] items)
     {
         // Grab reference to menu
-        List<FoodItem> menu_reference = FoodItemService.GetFoodItems();
-
+        List<FoodItem> menu_reference = new List<FoodItem>();
+        
+        foreach (var item in FoodItemService.GetFoodItems()) {
+            menu_reference.Add(item);
+        }
+        
         // Create Line Item based on sale items
         var LineItems = new List<SessionLineItemOptions>();
         for (int i = 0; i < items.Length; i++)

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MenuAPI.Models;
 using MenuAPI.Services;
+using MenuAPI.Interface;
 
 namespace MenuAPI.Controllers;
 
@@ -9,11 +10,11 @@ namespace MenuAPI.Controllers;
 public class MenuItemsController: ControllerBase
 {
     private readonly ILogger<MenuItemsController> _logger;
-    public PsqlFoodItemService FoodItemService { get; }  // Change to an interface
+    public IFoodItemService FoodItemService { get; }  // Change to an interface
     
     public MenuItemsController(
         ILogger<MenuItemsController> logger,
-        PsqlFoodItemService itemService
+        IFoodItemService itemService
         )
     {
         _logger = logger;

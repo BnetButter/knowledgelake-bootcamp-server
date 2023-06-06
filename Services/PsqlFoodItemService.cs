@@ -1,11 +1,10 @@
 using Npgsql;
 using MenuAPI.Models;
-
+using MenuAPI.Interface;
 namespace MenuAPI.Services;
 
-public class PsqlFoodItemService 
+public class PsqlFoodItemService: IFoodItemService
 {
-
     NpgsqlConnection conn { get; }
 
     public PsqlFoodItemService()
@@ -19,7 +18,7 @@ public class PsqlFoodItemService
 
     }
 
-    public List<FoodItem> GetFoodItems()
+    public IEnumerable<FoodItem> GetFoodItems()
     {
         conn.Open();
         try {
@@ -48,7 +47,6 @@ public class PsqlFoodItemService
         }
         finally {
             conn.Close();
-        }
-        
+        }   
     }
 }
