@@ -13,8 +13,8 @@ public class OrderItem
     [JsonPropertyName("options")]
     public int[] Options { get; set; }
 
-    [JsonPropertyName("completed")]
-    public bool Completed { get; set; }
+    [JsonPropertyName("status")]
+    public bool Status { get; set; }
     
     public override string ToString()
     {

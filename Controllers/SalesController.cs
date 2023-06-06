@@ -33,32 +33,7 @@ public class SalesController : ControllerBase
     [HttpGet(Name = "GetSales")]
     public RedirectResult Get()
     {
-        var options = new SessionCreateOptions
-        {
-            SuccessUrl = "http://localhost:1422",
-            LineItems = new List<SessionLineItemOptions>
-            {
-                new SessionLineItemOptions
-                {
-                    PriceData = new SessionLineItemPriceDataOptions
-                    {
-                        ProductData = new SessionLineItemPriceDataProductDataOptions
-                        {
-                            Name = "TestItem",
-                        },
-                        Currency = "USD",
-                        UnitAmount = 200,
-                    },
-                    Quantity = 2,
-                },
-            },
-            Mode = "payment",
-        };
-        var service = new SessionService();
         
-        var session = service.Create(options);
-        
-        return Redirect(session.Url);
     }
     
     [HttpPost(Name="PostSale")]
