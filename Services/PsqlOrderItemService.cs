@@ -13,7 +13,6 @@ public class PsqlOrderItemService: IOrderItemService
         conn = new NpgsqlConnection(connectionString);
     }
     
-        
     public IEnumerable<OrderItem> GetPendingOrderItems()
     {
         var orderItems = new List<OrderItem>();
